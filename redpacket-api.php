@@ -24,7 +24,7 @@ function sendRedPacket($floatAmount, $intQuantity, $boolRandom, $senderId){
     foreach($arrayOfCurrentUsers as $key => $arrayOfCurrentUser){
         if($senderId === $arrayOfCurrentUser['id']){
             $senderAmount = $arrayOfCurrentUser['amount'];
-            //get rid of the sender's array so that wont send to himself
+            //get rid of the sender's array so that he wont send to himself
             unset($arrayOfCurrentUsers[$key]);
         } 
         
@@ -55,6 +55,7 @@ function sendRedPacket($floatAmount, $intQuantity, $boolRandom, $senderId){
                 " receives " . $amountReceivedPerUser . "\r\n";  
             }
         } else if ((bool)$boolRandom === true){
+            //generate three different random red packet amounts
             $redPacketAmount = generateRandomNumbers($floatAmount, $intQuantity);
             if(in_array($arrayOfCurrentUser['id'], $receivingUserIds)){
                 array_push($userIdArray, $arrayOfCurrentUser['id']);
